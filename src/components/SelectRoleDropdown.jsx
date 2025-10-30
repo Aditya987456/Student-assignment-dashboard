@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 export function SelectNewRole({OnRoleGetsChanged}) {
 
-    const [ role, setRole ]=useState(localStorage.getItem('role') || 'student')   //if first time then by default student
+    const [ role, setRole ]=useState(localStorage.getItem('role') || 'student-1')   //if first time then by default student
 
     useEffect( ()=>{
         localStorage.setItem("role", role)
@@ -18,14 +18,14 @@ export function SelectNewRole({OnRoleGetsChanged}) {
                 >
                     <option  value="admin">🧑‍💼 Admin</option>
                     
-                {/* <optgroup label="🎓 Students">
-                    <option value="student1">Student 1</option>
-                    <option value="student2">Student 2</option>
-                    <option value="student3">Student 3</option>
-                    <option value="student4">Student 4</option>
-                </optgroup> */}
+                <optgroup label="🎓 Students">
+                    <option value="student-1">Student 1</option>
+                    <option value="student-2">Student 2</option>
+                    <option value="student-3">Student 3</option>
+                    <option value="student-4">Student 4</option>
+                </optgroup>
 
-                <option value="student">🎓 Student</option>
+                {/* <option value="student">🎓 Student</option> */}
 
             </select>
 
