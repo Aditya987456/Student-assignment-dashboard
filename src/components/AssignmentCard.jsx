@@ -28,13 +28,13 @@ export default function AssignmentCard({ assignment, studentName }) {
       </div>
 
       {/* ---- title ---- */}
-      <h2 className="text-lg font-semibold text-gray-800 mb-3 border-b border-gray-200 pb-2 w-full flex justify-center items-center gap-2">
+      <h2 className="text-xl font-semibold text-gray-800 mb-3 border-b border-gray-200 pb-2 w-full flex justify-center items-center gap-2">
         <FileText className="w-5 h-5 text-blue-600" />
         {assignment.title}
       </h2>
 
       {/* ---- description ---- */}
-      <p className="text-gray-600 text-sm mb-5 leading-relaxed">
+      <p className="text-gray-600 text-md mb-5 leading-relaxed">
         {assignment.description || "No description provided."}
       </p>
 

@@ -3,13 +3,14 @@ import { GraduationCap } from "lucide-react";
 
 export default function Navbar({ title, OnRoleGetsChanged }) {
   return (
-    <nav className="max-w-7xl mx-auto w-full rounded-t-2xl sticky top-0 z-50 
+
+    // navbar with gradient color --
+    <nav className="border max-w-7xl mx-auto w-full rounded-t-2xl sticky top-0 z-50 
       flex items-center justify-between px-6 py-4 
       bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 
       shadow-sm border-b border-gray-200 backdrop-blur-md bg-opacity-90 
       transition-all duration-300">
 
-      {/* ---- Left Section (Logo + Title) ---- */}
       <div className="flex items-center gap-3">
         <div className="p-2 bg-indigo-600 text-white rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
           <GraduationCap className="w-5 h-5" />
@@ -19,7 +20,7 @@ export default function Navbar({ title, OnRoleGetsChanged }) {
         </h1>
       </div>
 
-      {/* ---- Right Section (Role Selector) ---- */}
+      
       <div className="flex items-center gap-3">
         <SelectNewRole OnRoleGetsChanged={OnRoleGetsChanged} />
       </div>
