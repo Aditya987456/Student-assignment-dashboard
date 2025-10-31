@@ -7,14 +7,14 @@ export default function StudentDashboard({ studentName, OnRoleGetsChanged }) {
     <div className="min-h-screen bg-gray-100 p-2">
      
 
-      <Navbar title="🎓 Student Dashboard" OnRoleGetsChanged={OnRoleGetsChanged} />
+      <Navbar title="Student Dashboard" OnRoleGetsChanged={OnRoleGetsChanged} />
 
       <div className="max-w-7xl mx-auto p-6 bg-slate-50">
-        <h2 className="text-lg font-semibold mb-4">
+        <h2 className="text-xl font-semibold mb-4">
           Assignments for <span className="text-blue-600">{studentName}</span>
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 justify-items-center">
           {assignments.map((a) => (
             <AssignmentCard
               key={a.id}
