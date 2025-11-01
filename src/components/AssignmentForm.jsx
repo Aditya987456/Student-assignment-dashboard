@@ -3,24 +3,76 @@ import { useState } from "react"
 
 export const AssignmentForm=()=>{
 
-    //on form submit-- like creating a new assignment.
-    function CreateNewAssignment(e) {
-        e.preventDefault()
-        alert('Assignment Created successfully')
-    }
-
 
     //track the new assign with usestate firstly empty look like assignment then we put things in this.
     const [formData, setFormData]=useState({
         title:'',
-        description:'' | 'No description provided',
+        description:'',
         dueDate:'',
         driveLink:'',
     })
 
-    function HandleInputChange() {
-        setFormData()
+
+/*
+---------------------------------------------------------------------------------
+****How it “knows” what to replace
+Because when two keys have the same name in an object literal,
+the last one wins in JavaScript.
+---------------------------------------------------------------------------------
+---means when data is filling in form for creating assignment.
+*/
+    function HandleInputChange(e) {
+        setFormData( (previousFormData)=>({
+            ...previousFormData,
+            [e.target.name]: e.target.value
+        } ))
     }
+
+
+
+    function CreateNewAssignment() {
+        e.preventDefault();
+
+        //title check
+        if (!formData.title.trim()) {
+            alert('Title required')
+            return
+        }
+
+        //duedate check
+        if (!formData.dueDate.trim()) {
+            alert('dueDate required')
+            return
+        }
+
+        //description --> optional.
+
+
+        //For testing purpose --- drive link-> fixing with my link even we enter anyything in that field.
+        const fixedLink = "https://drive.google.com/drive/folders/your-link-id";
+
+        setFormData( (previousFormData)=>({
+            ...previousFormData,
+            driveLink: fixedLink
+        } ))
+
+
+        //--if all test passed then-
+         alert(" Assignment created successfully!");
+
+
+        //form data clearing
+          setFormData({
+            title: "",
+            dueDate: "",
+            description: "" ,
+            driveLink:""
+        });
+
+    }
+
+
+
 
 
     return(
@@ -33,8 +85,9 @@ export const AssignmentForm=()=>{
                 <input
                 type="text"
                 name="title"
-                value={formData.title}
-                onChange={handleChange}
+                //using this way - can send alert like title should be less than 100 words in realtime
+                value={formData.title}   //starting me ""
+                onChange={HandleInputChange}
                 placeholder="Assignment Title *"
                 className="border rounded-md px-4 py-2 w-full focus:ring-2 focus:ring-indigo-400 outline-none"
                 />
@@ -42,24 +95,24 @@ export const AssignmentForm=()=>{
                 <input
                 type="date"
                 name="dueDate"
-                //   value={formData.dueDate}
-                //   onChange={handleChange}
+                value={formData.dueDate}
+                onChange={HandleInputChange}
                 className="border rounded-md px-4 py-2 w-full focus:ring-2 focus:ring-indigo-400 outline-none"
                 />
 
                 <input
                 type="url"
                 name="driveLink"
-                //   value={formData.driveLink}
-                //   onChange={handleChange}
+                value={formData.driveLink}
+                onChange={HandleInputChange}
                 placeholder="Google Drive Link (optional)"
                 className="border rounded-md px-4 py-2 w-full focus:ring-2 focus:ring-indigo-400 outline-none col-span-1 md:col-span-2"
                 />
 
                 <textarea
                 name="description"
-                //   value={formData.description}
-                //   onChange={handleChange}
+                value={formData.description}
+                onChange={HandleInputChange}
                 placeholder="Assignment Description"
                 rows="3"
                 className="border rounded-md px-4 py-2 w-full focus:ring-2 focus:ring-indigo-400 outline-none col-span-1 md:col-span-2"
