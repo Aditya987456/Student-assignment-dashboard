@@ -4,7 +4,7 @@ import StudentDashboard from "./pages/studentDashboard"
 // import AdminDashboard from "./pages/adminDashboard"
 import { AssignmentForm } from "./components/AssignmentForm"
 // import Navbar from "./components/Navbar"
-// import AdminDashboard from "./pages/adminDashboard"
+ import AdminDashboard from "./pages/adminDashboard"
 
 
 function App() {
@@ -23,8 +23,8 @@ function App() {
     <div>
       {/* <Navbar OnRoleGetsChanged={HandleRoleChange}/> */}
       {/* <StudentDashboard studentName="student-3"  OnRoleGetsChanged={HandleRoleChange} /> */}
-{/* <AdminDashboard on OnRoleGetsChanged={HandleRoleChange}/> */}
-<AssignmentForm/>
+<AdminDashboard on OnRoleGetsChanged={HandleRoleChange}/>
+
     </div>
   )
 }
