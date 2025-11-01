@@ -1,7 +1,39 @@
-import { CheckCircle, Clock, Upload, FileText } from "lucide-react";
 
-export default function AssignmentCard({ assignment, studentName }) {
+import {
+  Calendar,
+  Clock,
+  FileText,
+  CheckCircle,
+  XCircle,
+  UploadCloud,
+  Upload
+} from "lucide-react";
+
+export default function AssignmentCard({ assignment, studentName, handleSubmit }) {
   const isSubmitted = assignment.submitted_Students[studentName];
+
+
+
+   const driveLink =
+    assignment.driveLink || "https://docs.google.com/forms/d/e/1FAIpQLSdTpvQkiyg1qkE9nXudtZELdTW8023fGrTsnsyoH7j7IOSFMA/viewform?usp=header";
+
+  // when click on submit
+  const handleSubmissionClick = () => {
+    if (isSubmitted) return;
+
+    const confirmSubmit = window.confirm(
+      "✅ Have you completed this assignment and uploaded it to Drive?"
+    );
+
+    if (confirmSubmit) {
+      handleSubmit(assignment.id, studentName);
+      alert("🎉 Assignment marked as submitted successfully!");
+    }
+  };
+
+
+
+
 
   return (
     <div className="relative border border-gray-200 bg-gradient-to-br from-white to-gray-50 rounded-lg px-6 py-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 w-full max-w-lg flex flex-col items-center text-center">
@@ -47,7 +79,7 @@ export default function AssignmentCard({ assignment, studentName }) {
       {/* ---- buttons ---- */}
       <div className="flex flex-row gap-3 w-full justify-center">
         <a
-          href={assignment.driveLink || "#"}
+          href={driveLink}
           target="_blank"
           rel="noopener noreferrer"
           className="flex-1 flex items-center justify-center gap-2 border border-gray-300 py-2.5 rounded-md text-sm font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 hover:border-blue-400 transition"
@@ -57,6 +89,7 @@ export default function AssignmentCard({ assignment, studentName }) {
         </a>
 
         <button
+        onClick={handleSubmissionClick}
           className={`flex-1 flex items-center justify-center gap-1 md:gap-2 py-2.5 rounded-md text-sm font-medium transition border ${
             isSubmitted
               ? "bg-green-600 text-white border-green-600 cursor-not-allowed"
@@ -71,3 +104,4 @@ export default function AssignmentCard({ assignment, studentName }) {
     </div>
   );
 }
+

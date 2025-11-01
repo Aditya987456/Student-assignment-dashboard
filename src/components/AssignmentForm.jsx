@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-export const AssignmentForm=()=>{
+export const AssignmentForm=({ onCreate })=>{
 
 
     //track the new assign with usestate firstly empty look like assignment then we put things in this.
@@ -30,7 +30,7 @@ the last one wins in JavaScript.
 
 
 
-    function CreateNewAssignment() {
+    function CreateNewAssignment(e) {
         e.preventDefault();
 
         //title check
@@ -48,17 +48,18 @@ the last one wins in JavaScript.
         //description --> optional.
 
 
-        //For testing purpose --- drive link-> fixing with my link even we enter anyything in that field.
-        const fixedLink = "https://drive.google.com/drive/folders/your-link-id";
+    const fixedLink = "https://docs.google.com/forms/d/e/1FAIpQLSfXAtlAOnqU4k84tNLWJgK_nQgmS7EhTZ_wNozSaNXq9n44Hw/viewform";
 
-        setFormData( (previousFormData)=>({
-            ...previousFormData,
-            driveLink: fixedLink
-        } ))
+    const finalData = {
+        ...formData,
+        driveLink: fixedLink,
+    };
 
+    onCreate(finalData); // use of this func in adminDashboard
+   
 
-        //--if all test passed then-
-         alert(" Assignment created successfully!");
+    //--if all test passed then-
+        alert(" Assignment created successfully!");
 
 
         //form data clearing

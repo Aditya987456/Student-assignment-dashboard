@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react"
 //import { SelectNewRole } from "./components/SelectRoleDropdown"
 import StudentDashboard from "./pages/studentDashboard"
-// import AdminDashboard from "./pages/adminDashboard"
+import AdminDashboard from "./pages/adminDashboard"
 import { AssignmentForm } from "./components/AssignmentForm"
 import Navbar from "./components/Navbar"
-import AdminDashboard from "./pages/adminDashboard"
+//import AdminDashboard from "./pages/adminDashboard"
 
 
 function App() {
