@@ -19,7 +19,7 @@ export const AssignmentForm=()=>{
     })
 
     function HandleInputChange() {
-        
+        setFormData()
     }
 
 
